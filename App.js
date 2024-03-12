@@ -17,7 +17,6 @@ export default function App() {
   const handleTextInput = (text) => {
     setInputMessage(text);
   };
-
   return (
     <View style={styles.container}>
       <View style={{ flex: 1, justifyContent: "center" }}>
