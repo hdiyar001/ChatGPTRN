@@ -43,6 +43,7 @@ export default function App() {
       .then((response) => response.json())
       .then((data) => {
         setInputMessage("");
+
         const message = {
           _id: Math.random().toString(36).substring(7),
           text: data.choices[0].message.content.trim(),
@@ -55,8 +56,7 @@ export default function App() {
         setMessages((previousMessages) =>
           GiftedChat.append(previousMessages, message)
         );
-        const options = {};
-        Speech.speak(data.choices[0].message.content, options);
+        Speech.speak(data.choices[0].message.content, {});
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -117,7 +117,6 @@ export default function App() {
     // <ImageBackground source={require('./assets/bg.jpg')} resizeMode="cover" style{{flex:1, width:100%, height:100%}}>
     <View style={{ flex: 1 }}>
       <View style={{ flex: 1, justifyContent: "center" }}>
-        {/* <Text>{outputMessage}</Text> */}
         <GiftedChat
           messages={messages}
           renderInputToolbar={() => {}}
